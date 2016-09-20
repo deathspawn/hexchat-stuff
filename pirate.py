@@ -17,8 +17,6 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
-#
-#
 
 from urllib.parse import urlencode
 from urllib.request import urlopen
@@ -31,12 +29,10 @@ __module_description__ = 'Translate text to pirate speak.'
 
 def pirate(jargon):
     phrase = jargon
-    phrase = phrase.lstrip("\'").rstrip("\'")
     query = urlencode({ 'typing' : phrase.replace('<','{`{') })
     url = "http://postlikeapirate.com/AJAXtranslate.php?" + query
     doc = urlopen(url)
     response = doc.read().decode('utf8', 'ignore')
-    #response = response.replace('{`{','<').encode('utf8', 'ignore')
     return str(response)
 
 def pirate_func(word, word_eol, userdata):
